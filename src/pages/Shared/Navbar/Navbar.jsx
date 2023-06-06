@@ -1,92 +1,64 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const navOptions = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/menu">Our Menu</Link>
+      </li>
+      <li>
+        <Link to="/order/salads">Order</Link>
+      </li>
+      <li>
+        <Link>DashBoard</Link>
+      </li>
+    </>
+  );
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
-
+  //   fixed z-10 bg-opacity-20
   return (
-    <nav className="bg-gray-900">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          <div className="flex items-center">
-            <Link to="/" className="text-white text-lg font-semibold">
-              Logo
-            </Link>
-            <button
-              className="ml-4 md:hidden text-gray-400 hover:text-white focus:outline-none"
-              onClick={toggleNavbar}>
+    <div>
+      <div className="navbar  bg-black max-w-screen-xl text-white">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
-                className="h-6 w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24">
-                {isOpen ? (
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"
-                  />
-                ) : (
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"
-                  />
-                )}
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
               </svg>
-            </button>
-          </div>
-          <div className={`md:flex ${isOpen ? "block" : "hidden"}`}>
-            <ul className="md:flex items-center">
-              <li>
-                <Link
-                  to="/"
-                  className={`block text-gray-400 hover:text-white px-2 py-1 md:p-2 ${
-                    location.pathname === "/" ? "text-white font-bold" : ""
-                  }`}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className={`block text-gray-400 hover:text-white px-2 py-1 md:p-2 ${
-                    location.pathname === "/about" ? "text-white font-bold" : ""
-                  }`}>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className={`block text-gray-400 hover:text-white px-2 py-1 md:p-2 ${
-                    location.pathname === "/services"
-                      ? "text-white font-bold"
-                      : ""
-                  }`}>
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className={`block text-gray-400 hover:text-white px-2 py-1 md:p-2 ${
-                    location.pathname === "/contact"
-                      ? "text-white font-bold"
-                      : ""
-                  }`}>
-                  Contact
-                </Link>
-              </li>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              {navOptions}
             </ul>
           </div>
+          <a className="btn btn-ghost normal-case text-xl italic">
+            Sports Talent
+            <br />
+            Academy
+          </a>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        </div>
+        <div className="navbar-end pr-4">
+          <Link to="/login">Login</Link>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
