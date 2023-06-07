@@ -3,6 +3,7 @@ import Main from "../LayOut/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
     ],
+  },
+  {
+    path: "dashboard",
+    element: <ProtectedRoutes></ProtectedRoutes>,
   },
 ]);
 

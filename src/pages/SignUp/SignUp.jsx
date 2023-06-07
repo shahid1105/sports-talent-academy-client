@@ -10,6 +10,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
 
   const { createUser } = useContext(AuthContext);
@@ -64,7 +65,7 @@ const SignUp = () => {
                   placeholder="photoURL"
                   className="input input-bordered"
                 />
-                {errors.name && (
+                {errors.photoURL && (
                   <span className="text-red-500">photoURL is required</span>
                 )}
               </div>
@@ -118,6 +119,30 @@ const SignUp = () => {
                     Password must be one upper case , one lower case , one
                     special character
                   </span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input
+                  {...register("confirm", {
+                    required: true,
+                    validate: (value) =>
+                      value === getValues("password") ||
+                      "Passwords do not match",
+                  })}
+                  type="password"
+                  placeholder="Confirm Password"
+                  className="input input-bordered"
+                />
+                {errors.confirm?.type === "required" && (
+                  <span className="text-red-500">
+                    Confirm Password is required
+                  </span>
+                )}
+                {errors.confirm?.type === "validate" && (
+                  <span className="text-red-500">{errors.confirm.message}</span>
                 )}
               </div>
               <div className="form-control mt-6">
