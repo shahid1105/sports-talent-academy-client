@@ -1,12 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,10 +48,7 @@ const Login = () => {
       <div>
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
-            <div className="text-center lg:text-left">
-              <h1 className="text-5xl font-bold">Login now!</h1>
-            </div>
-            <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+            <div className="card max-w-sm shadow-2xl bg-base-100">
               <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -84,21 +80,6 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control">
-                  {/* <label className="label">
-                    <LoadCanvasTemplate />
-                  </label> */}
-                  {/* <input
-                    onBlur={handleValidateCaptcha}
-                    name="captcha"
-                    type="text"
-                    placeholder="type the captcha above"
-                    className="input input-bordered"
-                  /> */}
-                  <p className="mt-8 border border-gray-300 text-blue-600 font-bold p-2 rounded-xl">
-                    Click here to update captcha
-                  </p>
-                </div>
-                <div className="form-control mt-6">
                   <input
                     className="btn btn-primary"
                     type="submit"

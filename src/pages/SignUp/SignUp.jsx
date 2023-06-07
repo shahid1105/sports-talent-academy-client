@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
   const {
@@ -13,7 +12,7 @@ const SignUp = () => {
     getValues,
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser } = useAuth();
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
@@ -29,16 +28,11 @@ const SignUp = () => {
       </Helmet>
 
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold"> Sign Up now!</h1>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlK6I6t6DGqnps7-l2gU80fDVL8YIllzeXWK4iLD69Xg&s"
-              alt=""
-            />
-          </div>
+        <div className="hero-content">
+          <div className="text-center"></div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <h1 className="text-2xl text-center font-bold">Sign in now!!!</h1>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>

@@ -11,7 +11,7 @@ import slider8 from "../../../assets/slider/slide-8.jpg";
 
 const Banner = () => {
   return (
-    <div className="mb-8 mt-4">
+    <div className="mb-8 ">
       <div className="max-w-screen-xl p-4 bg-neutral bg-opacity-80 rounded">
         <Carousel
           showThumbs={false}
@@ -69,7 +69,7 @@ const Banner = () => {
             );
           }}>
           <div className="carousel-item">
-            <img src={slider1} className="rounded-box" alt="Carousel Item 1" />
+            <img src={slider8} className="rounded-box" alt="Carousel Item 1" />
           </div>
           <div className="carousel-item">
             <img src={slider2} className="rounded-box" alt="Carousel Item 2" />
@@ -87,7 +87,7 @@ const Banner = () => {
             <img src={slider7} className="rounded-box" alt="Carousel Item 6" />
           </div>
           <div className="carousel-item">
-            <img src={slider8} className="rounded-box" alt="Carousel Item 7" />
+            <img src={slider1} className="rounded-box" alt="Carousel Item 7" />
           </div>
         </Carousel>
       </div>
