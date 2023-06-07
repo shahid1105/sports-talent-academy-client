@@ -1,27 +1,41 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const navOptions = (
     <>
-      <li>
+      <li className="text-black md:text-white lg:text-white font-bold">
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/menu">Our Menu</Link>
+      <li className="text-black md:text-white lg:text-white font-bold">
+        <Link to="/menu">Instructors</Link>
       </li>
-      <li>
-        <Link to="/order/salads">Order</Link>
+      <li className="text-black md:text-white lg:text-white font-bold">
+        <Link to="/order/salads">Classes</Link>
       </li>
-      <li>
-        <Link>DashBoard</Link>
-      </li>
+      {user && (
+        <li className="text-black md:text-white lg:text-white font-bold">
+          <Link>Dashboard</Link>
+        </li>
+      )}
     </>
   );
 
   //   fixed z-10 bg-opacity-20
   return (
     <div>
-      <div className="navbar  bg-black max-w-screen-xl text-white">
+      <div className="navbar  bg-black bg-opacity-70 max-w-screen-xl text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -55,7 +69,26 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end pr-4">
-          <Link to="/login">Login</Link>
+          {user ? (
+            <>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-active btn-ghost">
+                  Log Out
+                </button>
+                <button>
+                  <img src="" alt="" />
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
         </div>
       </div>
     </div>
