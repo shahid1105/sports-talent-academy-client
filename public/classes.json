@@ -1,0 +1,142 @@
+[
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Yoga Class",
+    "instructorName": "John Smith",
+    "availableSeats": 20,
+    "price": 50
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "CrossFit Class",
+    "instructorName": "Sarah Johnson",
+    "availableSeats": 15,
+    "price": 60
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Swimming Class",
+    "instructorName": "Michael Davis",
+    "availableSeats": 25,
+    "price": 40
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Boxing Class",
+    "instructorName": "Emily Wilson",
+    "availableSeats": 18,
+    "price": 55
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Pilates Class",
+    "instructorName": "David Lee",
+    "availableSeats": 12,
+    "price": 45
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Spinning Class",
+    "instructorName": "Jennifer Thompson",
+    "availableSeats": 20,
+    "price": 35
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Zumba Class",
+    "instructorName": "Robert Johnson",
+    "availableSeats": 30,
+    "price": 40
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Tennis Class",
+    "instructorName": "Laura Adams",
+    "availableSeats": 10,
+    "price": 70
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Basketball Class",
+    "instructorName": "Daniel Wilson",
+    "availableSeats": 15,
+    "price": 65
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Football Class",
+    "instructorName": "Sophia Martin",
+    "availableSeats": 22,
+    "price": 50
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Volleyball Class",
+    "instructorName": "Adam Thompson",
+    "availableSeats": 16,
+    "price": 45
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Golf Class",
+    "instructorName": "Olivia Davis",
+    "availableSeats": 8,
+    "price": 80
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Tennis Class",
+    "instructorName": "James Wilson",
+    "availableSeats": 14,
+    "price": 60
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Swimming Class",
+    "instructorName": "Emma Roberts",
+    "availableSeats": 20,
+    "price": 40
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Yoga Class",
+    "instructorName": "Alexander Brown",
+    "availableSeats": 25,
+    "price": 55
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Badminton Class",
+    "instructorName": "Lily Johnson",
+    "availableSeats": 12,
+    "price": 30
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Boxing Class",
+    "instructorName": "Christopher Wilson",
+    "availableSeats": 18,
+    "price": 50
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Soccer Class",
+    "instructorName": "Sophia Martinez",
+    "availableSeats": 20,
+    "price": 40
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Pilates Class",
+    "instructorName": "Benjamin Davis",
+    "availableSeats": 15,
+    "price": 65
+  },
+  {
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
+    "name": "Tennis Class",
+    "instructorName": "Natalie Thompson",
+    "availableSeats": 10,
+    "price": 70
+  }
+]

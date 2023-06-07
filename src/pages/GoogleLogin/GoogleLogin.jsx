@@ -5,7 +5,6 @@ const GoogleLogin = () => {
     <div>
       <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 rounded-xl cursor-pointer">
         <FcGoogle size={32} />
-
         <p className="font-bold">Continue with Google</p>
       </div>
     </div>
