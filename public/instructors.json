@@ -1,69 +1,69 @@
 [
   {
-    "image": "/path/to/instructor1.jpg",
+    "image": "https://i.ibb.co/xgHGRLC/download-1.png",
     "name": "John Smith",
     "email": "john.smith@example.com",
     "numberOfClasses": 10,
     "classesTaken": ["Yoga", "Pilates", "Zumba"]
   },
   {
-    "image": "/path/to/instructor2.jpg",
+    "image": "https://i.ibb.co/gFDck1Q/instractor.png",
     "name": "Emily Johnson",
     "email": "emily.johnson@example.com",
     "numberOfClasses": 15,
     "classesTaken": ["CrossFit", "Kickboxing", "HIIT"]
   },
   {
-    "image": "/path/to/instructor3.jpg",
+    "image": "https://i.ibb.co/Dz9Q8qj/instractor2.png",
     "name": "Michael Davis",
     "email": "michael.davis@example.com",
     "numberOfClasses": 8,
     "classesTaken": ["Swimming", "Water Aerobics"]
   },
   {
-    "image": "/path/to/instructor4.jpg",
+    "image": "https://i.ibb.co/pyw01KC/instractor3.png",
     "name": "Sarah Wilson",
     "email": "sarah.wilson@example.com",
     "numberOfClasses": 12,
     "classesTaken": ["Pilates", "Yoga", "Barre"]
   },
   {
-    "image": "/path/to/instructor5.jpg",
+    "image": "https://i.ibb.co/34Hrzbm/instractor4.png",
     "name": "David Thompson",
     "email": "david.thompson@example.com",
     "numberOfClasses": 7,
     "classesTaken": ["Boxing", "Kickboxing", "MMA"]
   },
   {
-    "image": "/path/to/instructor6.jpg",
+    "image": "https://i.ibb.co/pvqXfN0/instractor5.png",
     "name": "Jennifer Miller",
     "email": "jennifer.miller@example.com",
     "numberOfClasses": 9,
     "classesTaken": ["Zumba", "Dance Fitness"]
   },
   {
-    "image": "/path/to/instructor7.jpg",
+    "image": "https://i.ibb.co/vJN1Rcc/instractor6.png",
     "name": "Robert Brown",
     "email": "robert.brown@example.com",
     "numberOfClasses": 6,
     "classesTaken": ["Yoga", "Meditation"]
   },
   {
-    "image": "/path/to/instructor8.jpg",
+    "image": "https://i.ibb.co/Y34Z6yj/instractor7.png",
     "name": "Jessica Clark",
     "email": "jessica.clark@example.com",
     "numberOfClasses": 11,
     "classesTaken": ["Pilates", "Barre", "Yoga"]
   },
   {
-    "image": "/path/to/instructor9.jpg",
+    "image": "https://i.ibb.co/1mcsB2t/instractor8.png",
     "name": "Christopher Lee",
     "email": "christopher.lee@example.com",
     "numberOfClasses": 14,
     "classesTaken": ["HIIT", "CrossFit", "Strength Training"]
   },
   {
-    "image": "/path/to/instructor10.jpg",
+    "image": "https://i.ibb.co/mD6pSj0/instractor9.png",
     "name": "Laura Hernandez",
     "email": "laura.hernandez@example.com",
     "numberOfClasses": 5,
