@@ -3,6 +3,7 @@ import ClassCard from "./ClassCard";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
+  console.log(classes);
   useEffect(() => {
     fetch("http://localhost:5000/classes")
       .then((res) => res.json())

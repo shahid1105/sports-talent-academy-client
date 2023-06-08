@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import logo from "../../../assets/logo/logo.png";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -59,7 +60,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="flex items-center">
-            <img className="h-[50px] rounded-full" src="logo.png" alt="" />
+            <img className="h-[50px] rounded-full" src={logo} alt="" />
             <a className="btn btn-ghost normal-case text-xl italic hidden md:block lg:block">
               Sports Talent
               <br />

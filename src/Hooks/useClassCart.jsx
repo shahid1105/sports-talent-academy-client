@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 const useClassCart = () => {
   const { user } = useAuth();
 
-  const { refetch, data: classCart = [] } = useQuery({
+  const { refetch, data: classCarts = [] } = useQuery({
     queryKey: ["class-carts", user?.email],
     queryFn: async () => {
       const res = await fetch(
@@ -18,7 +18,7 @@ const useClassCart = () => {
     //   return res.data;
     // },
   });
-  return [classCart, refetch];
+  return [classCarts, refetch];
 };
 
 export default useClassCart;

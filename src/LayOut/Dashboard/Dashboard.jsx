@@ -4,7 +4,7 @@ import { FaStore } from "react-icons/fa";
 import useClassCart from "../../Hooks/useClassCart";
 
 const Dashboard = () => {
-  const [classCart] = useClassCart();
+  const [classCarts] = useClassCart();
   return (
     <div>
       <Navbar></Navbar>
@@ -26,7 +26,7 @@ const Dashboard = () => {
               <Link to="/dashboard/myselectedclass">
                 <FaStore></FaStore> My Selected Class
                 <div className="badge badge-secondary">
-                  +{classCart?.length || 0}
+                  +{classCarts?.length || 0}
                 </div>
               </Link>
             </li>
