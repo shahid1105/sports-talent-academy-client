@@ -1,19 +1,45 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useClassCart from "../../../Hooks/useClassCart";
+import Swal from "sweetalert2";
 
 const MySelectedClass = () => {
   const [classCarts, refetch] = useClassCart();
+
+  const handleDeletedClass = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/class-carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <>
       <h1 className="text-3xl font-bold italic text-center">
         --- Your All selected Classes ---
       </h1>
-      <div className="overflow-x-auto mt-12">
+      <div className="overflow-x-auto mt-12 bg-base-300 font-bold justify-evenly">
         <table className="table">
           {/* head */}
-          <thead>
-            <tr>
+          <thead className="bg-pink-300 ">
+            <tr className="text-[18px] text-black ">
               <th>#</th>
               <th>Class Photo</th>
               <th>Instructor Name</th>
@@ -44,7 +70,7 @@ const MySelectedClass = () => {
                 <td> ${classCart.price}</td>
                 <td>
                   <button
-                    // onClick={() => handleDelete(item)}
+                    onClick={() => handleDeletedClass(classCart)}
                     className="btn btn-ghost btn-sm bg-red-600 text-white">
                     <FaTrashAlt></FaTrashAlt>
                   </button>
