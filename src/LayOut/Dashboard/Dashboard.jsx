@@ -3,12 +3,13 @@ import Navbar from "../../pages/Shared/Navbar/Navbar";
 import { FaStore } from "react-icons/fa";
 import useClassCart from "../../Hooks/useClassCart";
 import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const Dashboard = () => {
   const [classCarts] = useClassCart();
 
   const [isAdmin] = useAdmin();
-  const isInstructor = false;
+  const [isInstructor] = useInstructor();
 
   return (
     <div>
@@ -40,7 +41,16 @@ const Dashboard = () => {
                 </li>
               </>
             ) : isInstructor ? (
-              <></>
+              <>
+                <li>
+                  <Link to="/dashboard/addaclass">Add A Class</Link>
+                </li>
+                <li>
+                  <Link className="mt-4" to="/dashboard/myclasses ">
+                    My Classes
+                  </Link>
+                </li>
+              </>
             ) : (
               <>
                 <li>
