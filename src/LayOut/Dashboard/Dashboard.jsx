@@ -1,13 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../../pages/Shared/Navbar/Navbar";
+import { FaStore } from "react-icons/fa";
+import useClassCart from "../../Hooks/useClassCart";
 
 const Dashboard = () => {
+  const [classCart] = useClassCart();
   return (
     <div>
       <Navbar></Navbar>
       <div className="drawer lg:drawer-open pt-[68px]">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col m-12">
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
@@ -20,7 +23,12 @@ const Dashboard = () => {
           <ul className="menu ps-8 text-white  text-lg p-4 w-80 h-full bg-black bg-opacity-60 pt-20 ">
             {/* Sidebar content here */}
             <li>
-              <Link to="/dashboard/myselectedclass">My Selected Class</Link>
+              <Link to="/dashboard/myselectedclass">
+                <FaStore></FaStore> My Selected Class
+                <div className="badge badge-secondary">
+                  +{classCart?.length || 0}
+                </div>
+              </Link>
             </li>
             <li>
               <Link className="mt-4" to="/dashboard/myenrolledclass">
