@@ -55,7 +55,7 @@ const Login = () => {
                     <span className="label-text">Email</span>
                   </label>
                   <input
-                    defaultValue={"sports@gmail.com"}
+                    defaultValue={"sp@gmail.com"}
                     name="email"
                     type="email"
                     placeholder="email"

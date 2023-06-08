@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
@@ -12,13 +13,33 @@ const SignUp = () => {
     getValues,
   } = useForm();
 
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    });
+    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        updateUserProfile(data.name, data.photoURL).then(() => {
+          console.log("user profile update");
+          Swal.fire({
+            title: "User SignUp successful",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -54,7 +75,7 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("photoURL", { required: true })}
-                  defaultValue={"https://i.ibb.co/kJsr3fF/profile-3.png"}
+                  defaultValue={"https://i.ibb.co/cyNTQ9x/profile-3.png"}
                   type="text"
                   placeholder="photoURL"
                   className="input input-bordered"

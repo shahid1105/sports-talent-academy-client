@@ -1,11 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../Providers/AuthProvider";
-
-import { BiUserCircle } from "react-icons/bi";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
 
   const handleLogOut = () => {
     logOut()
@@ -28,7 +25,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li className="text-black md:text-white lg:text-white font-bold">
-          <Link>Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
       )}
     </>
@@ -61,7 +58,7 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img className="h-[50px] rounded-full" src="logo.png" alt="" />
             <a className="btn btn-ghost normal-case text-xl italic hidden md:block lg:block">
               Sports Talent
@@ -83,12 +80,9 @@ const Navbar = () => {
               </button>
               <div className="avatar">
                 <div className="w-10 ms-4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  <img src={user?.photoURL} />
                 </div>
               </div>
-              <p className="text-5xl ps-3">
-                <BiUserCircle></BiUserCircle>
-              </p>
             </>
           ) : (
             <>

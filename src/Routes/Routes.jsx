@@ -6,6 +6,9 @@ import SignUp from "../pages/SignUp/SignUp";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import Dashboard from "../LayOut/Dashboard/Dashboard";
+import MySelectedClass from "../pages/Dashboard/StudentDashboard/MySelectedClass";
+import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledClasses";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +39,21 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <ProtectedRoutes></ProtectedRoutes>,
+    element: (
+      <ProtectedRoutes>
+        <Dashboard></Dashboard>
+      </ProtectedRoutes>
+    ),
+    children: [
+      {
+        path: "myselectedclass",
+        element: <MySelectedClass></MySelectedClass>,
+      },
+      {
+        path: "myenrolledclass",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
+    ],
   },
 ]);
 
