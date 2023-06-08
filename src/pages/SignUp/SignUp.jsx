@@ -18,7 +18,6 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
@@ -26,13 +25,11 @@ const SignUp = () => {
         updateUserProfile(data.name, data.photoURL).then(() => {
           console.log("user profile update");
           Swal.fire({
-            title: "User SignUp successful",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
-            },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
+            position: "top-end",
+            icon: "success",
+            title: "Sign Up successfully",
+            showConfirmButton: false,
+            timer: 1500,
           });
           navigate("/");
         });

@@ -1,5 +1,62 @@
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const ClassCard = ({ classData }) => {
-  const { name, image, instructorName, availableSeats, price } = classData;
+  const { name, image, instructorName, availableSeats, price, _id } = classData;
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { user } = useAuth();
+
+  const addToClass = (data) => {
+    console.log(data);
+    if (user && user.email) {
+      const selectedClass = {
+        classItemId: _id,
+        instructorName,
+        availableSeats,
+        name,
+        image,
+        price,
+        email: user.email,
+      };
+      fetch("http://localhost:5000/class-cart", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(selectedClass),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Class added in my selected items",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Please login to selected the class",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+  };
+
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -30,7 +87,9 @@ const ClassCard = ({ classData }) => {
             </div>
           </div>
           <div className="card-actions mt-4">
-            <button className="btn bg-slate-600 text-white font-bold">
+            <button
+              onClick={() => addToClass(classData)}
+              className="btn bg-slate-600 text-white font-bold">
               Select
             </button>
           </div>
