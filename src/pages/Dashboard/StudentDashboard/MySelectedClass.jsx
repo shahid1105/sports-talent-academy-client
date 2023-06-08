@@ -39,7 +39,7 @@ const MySelectedClass = () => {
         <table className="table">
           {/* head */}
           <thead className="bg-pink-300 ">
-            <tr className="text-[18px] text-black ">
+            <tr className="text-[17px] text-black ">
               <th>#</th>
               <th>Class Photo</th>
               <th>Instructor Name</th>

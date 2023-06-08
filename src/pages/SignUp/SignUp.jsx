@@ -23,7 +23,11 @@ const SignUp = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL).then(() => {
-          const savedUser = { name: data.name, email: data.email };
+          const savedUser = {
+            name: data.name,
+            email: data.email,
+            image: data.photoURL,
+          };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
@@ -99,7 +103,7 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("email", { required: true })}
-                  defaultValue={"sports@gmail.com"}
+                  defaultValue={"@gmail.com"}
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
@@ -157,6 +161,7 @@ const SignUp = () => {
                       "Passwords do not match",
                   })}
                   type="password"
+                  defaultValue={"12Ss@@"}
                   placeholder="Confirm Password"
                   className="input input-bordered"
                 />

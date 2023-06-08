@@ -5,6 +5,10 @@ import useClassCart from "../../Hooks/useClassCart";
 
 const Dashboard = () => {
   const [classCarts] = useClassCart();
+
+  const isAdmin = true;
+  const isInstructor = false;
+
   return (
     <div>
       <Navbar></Navbar>
@@ -22,19 +26,37 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu ps-8 text-white  text-lg p-4 w-80 h-full bg-black bg-opacity-60 pt-20 ">
             {/* Sidebar content here */}
-            <li>
-              <Link to="/dashboard/myselectedclass">
-                <FaStore></FaStore> My Selected Class
-                <div className="badge badge-secondary">
-                  +{classCarts?.length || 0}
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link className="mt-4" to="/dashboard/myenrolledclass">
-                My Enrolled Class
-              </Link>
-            </li>
+
+            {isAdmin ? (
+              <>
+                <li>
+                  <Link to="/dashboard/manageclasses">Manage Classes</Link>
+                </li>
+                <li>
+                  <Link className="mt-4" to="/dashboard/manageusers">
+                    Manage Users
+                  </Link>
+                </li>
+              </>
+            ) : isInstructor ? (
+              <></>
+            ) : (
+              <>
+                <li>
+                  <Link to="/dashboard/myselectedclass">
+                    <FaStore></FaStore> My Selected Class
+                    <div className="badge badge-secondary">
+                      +{classCarts?.length || 0}
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="mt-4" to="/dashboard/myenrolledclass">
+                    My Enrolled Class
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
