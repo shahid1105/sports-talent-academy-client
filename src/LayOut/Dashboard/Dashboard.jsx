@@ -2,11 +2,12 @@ import { Link, Outlet } from "react-router-dom";
 import Navbar from "../../pages/Shared/Navbar/Navbar";
 import { FaStore } from "react-icons/fa";
 import useClassCart from "../../Hooks/useClassCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [classCarts] = useClassCart();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   const isInstructor = false;
 
   return (
