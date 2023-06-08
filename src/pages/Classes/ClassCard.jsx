@@ -35,7 +35,7 @@ const ClassCard = ({ classData }) => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Class added in my selected items",
+              title: "Class added in my selected classes page",
               showConfirmButton: false,
               timer: 1500,
             });
