@@ -11,6 +11,9 @@ import MySelectedClass from "../pages/Dashboard/StudentDashboard/MySelectedClass
 import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledClasses";
 import ManageClasses from "../pages/Dashboard/AdminDasboard/ManageClasses";
 import ManageUsers from "../pages/Dashboard/AdminDasboard/ManageUsers";
+import AddAClass from "../pages/Dashboard/InstructorDashboard/AddAClass";
+import IsAdminRoutes from "./IsAdminRoutes";
+import IsInstructorRoutes from "./IsInstructorRoutes";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,7 @@ const router = createBrowserRouter([
       </ProtectedRoutes>
     ),
     children: [
+      // students routes
       {
         path: "myselectedclass",
         element: <MySelectedClass></MySelectedClass>,
@@ -55,13 +59,33 @@ const router = createBrowserRouter([
         path: "myenrolledclass",
         element: <MyEnrolledClasses></MyEnrolledClasses>,
       },
+
+      // admins routes
       {
         path: "manageclasses",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <IsAdminRoutes>
+            <ManageClasses></ManageClasses>
+          </IsAdminRoutes>
+        ),
       },
       {
         path: "manageusers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <IsAdminRoutes>
+            <ManageUsers></ManageUsers>
+          </IsAdminRoutes>
+        ),
+      },
+
+      // instructors routers
+      {
+        path: "addaclass",
+        element: (
+          <IsInstructorRoutes>
+            <AddAClass></AddAClass>
+          </IsInstructorRoutes>
+        ),
       },
     ],
   },
