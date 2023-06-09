@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useClassCart from "../../../Hooks/useClassCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [classCarts, refetch] = useClassCart();
@@ -76,9 +77,14 @@ const MySelectedClass = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-sm text-white font-bold bg-yellow-600">
-                    Pay
-                  </button>
+                  <Link
+                    to={{
+                      pathname: `/dashboard/payment/${classCart._id}`,
+                    }}>
+                    <button className="btn btn-sm text-white font-bold bg-yellow-600">
+                      Pay
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}

@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import logo from "../../../assets/logo/logo.png";
+// import useAdmin from "../../../Hooks/useAdmin";
+// import useInstructor from "../../../Hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  // const [isAdmin]= useAdmin();
+  // const [isInstructor]= useInstructor();
 
   const handleLogOut = () => {
     logOut()
@@ -99,3 +103,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// to={
+//               isAdmin
+//                 ? "/dashboard/manageclasses"
+//                 : isInstructor
+//                 ? "/dashboard/addaclass"
+//                 : "/dashboard/myselectedclass"
+//             }
+
+// to = "/dashboard";

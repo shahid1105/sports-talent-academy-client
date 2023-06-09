@@ -1,8 +1,10 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ClassCard = ({ classData }) => {
+  const [disabled, setDisabled] = useState(true);
   const { name, image, instructorName, availableSeats, price, _id } = classData;
 
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ const ClassCard = ({ classData }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
+            setDisabled(true);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -88,6 +91,7 @@ const ClassCard = ({ classData }) => {
           </div>
           <div className="card-actions mt-4">
             <button
+              disabled={disabled}
               onClick={() => addToClass(classData)}
               className="btn bg-slate-600 text-white font-bold">
               Select

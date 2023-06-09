@@ -78,12 +78,19 @@ const ManageUsers = () => {
                     </div>
                   </div>
                 </td>
-                <td>
-                  {user.role === "instructor" ? (
+                {/* <td>
+                  {user.role === "instructor" || user.role === "admin" ? (
                     <>
                       <button
                         disabled={disable}
                         className="btn btn-ghost btn-xs text-white font-bold bg-indigo-500">
+                        Add Instructor
+                      </button>
+                      <button
+                        disabled={disable}
+                        className={`px-5  rounded-lg  btn-xs text-white font-bold ${
+                          disable ? "bg-red-500" : "bg-indigo-500"
+                        }`}>
                         Add Instructor
                       </button>
                     </>
@@ -96,15 +103,55 @@ const ManageUsers = () => {
                       </button>
                     </>
                   )}
-                </td>
+                </td> */}
                 <td>
-                  {user.role === "admin" ? (
+                  {user.role === "instructor" || user.role === "admin" ? (
                     <>
-                      <button
-                        disabled={disable}
-                        className="btn btn-ghost btn-xs bg-lime-600 text-white font-bold">
-                        Add Admin
-                      </button>
+                      {user.role === "instructor" && (
+                        <button
+                          disabled={disable}
+                          className="btn px-5 rounded-lg  btn-ghost btn-xs text-white font-bold bg-indigo-500">
+                          Instructor
+                        </button>
+                      )}
+                      {user.role === "admin" && (
+                        <button
+                          disabled={disable}
+                          className={`px-5 rounded-lg btn-xs text-white font-bold ${
+                            disable ? "bg-red-500" : "bg-indigo-500"
+                          }`}>
+                          Add Instructor
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn btn-ghost btn-xs text-white font-bold bg-indigo-500">
+                      Add Instructor
+                    </button>
+                  )}
+                </td>
+
+                <td>
+                  {user.role === "admin" || user.role === "instructor" ? (
+                    <>
+                      {user.role === "admin" && (
+                        <button
+                          disabled={disable}
+                          className="btn px-6 rounded-lg  btn-ghost btn-xs bg-lime-600 text-white font-bold">
+                          Admin
+                        </button>
+                      )}
+                      {user.role === "instructor" && (
+                        <button
+                          disabled={disable}
+                          className={`px-4 rounded-lg btn-xs text-white font-bold ${
+                            disable ? "bg-red-500" : "bg-indigo-500"
+                          }`}>
+                          Add Admin
+                        </button>
+                      )}
                     </>
                   ) : (
                     <>

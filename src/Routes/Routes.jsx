@@ -14,6 +14,7 @@ import ManageUsers from "../pages/Dashboard/AdminDasboard/ManageUsers";
 import AddAClass from "../pages/Dashboard/InstructorDashboard/AddAClass";
 import IsAdminRoutes from "./IsAdminRoutes";
 import IsInstructorRoutes from "./IsInstructorRoutes";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "myenrolledclass",
         element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment></Payment>,
       },
 
       // admins routes
