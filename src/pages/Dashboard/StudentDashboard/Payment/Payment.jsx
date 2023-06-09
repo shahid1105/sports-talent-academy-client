@@ -12,7 +12,7 @@ const Payment = () => {
   // console.log("id", id);
 
   const [singleData, setSingleData] = useState({});
-  // console.log(singleData.price);
+  // console.log(singleData);
 
   const price = singleData.price;
 
@@ -46,7 +46,7 @@ const Payment = () => {
         Payment
       </h3>
       <Elements stripe={stripePromise}>
-        <CheckOutForm price={price}></CheckOutForm>
+        <CheckOutForm price={price} singleData={singleData}></CheckOutForm>
       </Elements>
     </div>
   );

@@ -2,8 +2,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useAuth from "../../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useClassCart from "../../../../Hooks/useClassCart";
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ singleData, price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -12,6 +14,7 @@ const CheckOutForm = ({ price }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const [, refetch] = useClassCart();
 
   useEffect(() => {
     if (price > 0) {
@@ -67,6 +70,32 @@ const CheckOutForm = ({ price }) => {
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
       // save payments information to the server
+      const payment = {
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        price,
+        date: new Date(),
+        availableSeats: singleData.availableSeats - 1,
+        image: singleData.image,
+        instructorName: singleData.instructorName,
+        singleDataItems: singleData._id,
+        classItemId: singleData.classItemId,
+        status: "service Active",
+        className: singleData.name,
+      };
+      axiosSecure.post("/cart-payments", payment).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedResult.insertedId) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Payment Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
     }
   };
 

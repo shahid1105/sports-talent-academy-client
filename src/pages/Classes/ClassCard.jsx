@@ -91,7 +91,7 @@ const ClassCard = ({ classData }) => {
           </div>
           <div className="card-actions mt-4">
             <button
-              disabled={disabled}
+              disabled={false}
               onClick={() => addToClass(classData)}
               className="btn bg-slate-600 text-white font-bold">
               Select
