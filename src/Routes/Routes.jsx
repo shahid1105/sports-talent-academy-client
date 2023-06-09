@@ -15,6 +15,7 @@ import AddAClass from "../pages/Dashboard/InstructorDashboard/AddAClass";
 import IsAdminRoutes from "./IsAdminRoutes";
 import IsInstructorRoutes from "./IsInstructorRoutes";
 import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payment></Payment>,
+      },
+      {
+        path: "paymenthistory",
+        element: <PaymentHistory></PaymentHistory>,
       },
 
       // admins routes

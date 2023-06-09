@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 
 const ClassCard = ({ classData }) => {
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
   const { name, image, instructorName, availableSeats, price, _id } = classData;
 
   const navigate = useNavigate();
@@ -12,8 +12,8 @@ const ClassCard = ({ classData }) => {
 
   const { user } = useAuth();
 
-  const addToClass = (data) => {
-    console.log(data);
+  const addToClass = () => {
+    // console.log(data);
     if (user && user.email) {
       const selectedClass = {
         classItemId: _id,
@@ -34,7 +34,7 @@ const ClassCard = ({ classData }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            setDisabled(true);
+            // setDisabled(true);
             Swal.fire({
               position: "top-end",
               icon: "success",

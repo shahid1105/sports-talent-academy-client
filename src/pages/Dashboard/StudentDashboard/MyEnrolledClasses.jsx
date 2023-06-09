@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const MyEnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const [allEnrolled, setAllEnrolled] = useState([]);
-  console.log(allEnrolled);
+  // console.log(allEnrolled);
 
   useEffect(() => {
     axiosSecure

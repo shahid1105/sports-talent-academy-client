@@ -72,6 +72,7 @@ const CheckOutForm = ({ singleData, price }) => {
       // save payments information to the server
       const payment = {
         email: user?.email,
+        userName: user?.displayName,
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
@@ -134,7 +135,7 @@ const CheckOutForm = ({ singleData, price }) => {
       )}
       {transactionId && (
         <p className="text-3xl text-center mt-5 text-green-500">
-          Transaction complete with Transaction Id : {transactionId}
+          Transaction complete
         </p>
       )}
     </div>
