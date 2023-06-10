@@ -3,8 +3,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { useForm } from "react-hook-form";
+
+//  useLocation, useNavigate;
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const { signIn } = useAuth();
 
   const location = useLocation();
@@ -12,11 +21,8 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const handleLogin = (data) => {
+    const { email, password } = data;
 
     signIn(email, password)
       .then((result) => {
@@ -45,30 +51,36 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             <div className="card max-w-sm shadow-2xl bg-base-100">
-              <form onSubmit={handleLogin} className="card-body">
+              <form onSubmit={handleSubmit(handleLogin)} className="card-body">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
                   <input
+                    {...register("email", { required: true })}
                     defaultValue={"sportstalentacademy@gmail.com"}
-                    name="email"
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
                   />
+                  {errors.email && (
+                    <span className="text-red-500">Email is required</span>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
                   <input
+                    {...register("password", { required: true })}
                     defaultValue={"12Ss@@"}
-                    name="password"
                     type="password"
                     placeholder="password"
                     className="input input-bordered"
                   />
+                  {errors.password && (
+                    <span className="text-red-500">Password is required</span>
+                  )}
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
                       Forgot password?

@@ -1,5 +1,5 @@
 const PopularInstructorCard = ({ topInstructor }) => {
-  const { name, image, classesTaken, email } = topInstructor;
+  const { name, image, email } = topInstructor;
 
   return (
     <div>
@@ -13,13 +13,13 @@ const PopularInstructorCard = ({ topInstructor }) => {
             <div className="badge badge-secondary">TOP Instructor</div>
           </h2>
           <p>Email: {email}</p>
-          <div className="card-actions justify-end">
+          {/* <div className="card-actions justify-end">
             {classesTaken.map((className, index) => (
               <div key={index} className="badge badge-outline">
                 {className}
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

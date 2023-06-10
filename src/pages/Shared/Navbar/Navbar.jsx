@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import logo from "../../../assets/logo/logo.png";
-// import useAdmin from "../../../Hooks/useAdmin";
-// import useInstructor from "../../../Hooks/useInstructor";
+import useAdmin from "../../../Hooks/useAdmin";
+import useInstructor from "../../../Hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  // const [isAdmin]= useAdmin();
-  // const [isInstructor]= useInstructor();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogOut = () => {
     logOut()
@@ -28,9 +28,17 @@ const Navbar = () => {
       <li className="text-black md:text-white lg:text-white font-bold">
         <Link to="/classes">Classes</Link>
       </li>
-      {user && (
+      {isAdmin ? (
         <li className="text-black md:text-white lg:text-white font-bold">
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to={"/dashboard/manageclasses"}>Dashboard</Link>
+        </li>
+      ) : isInstructor ? (
+        <li className="text-black md:text-white lg:text-white font-bold">
+          <Link to={"/dashboard/addaclass"}>Dashboard</Link>
+        </li>
+      ) : (
+        <li className="text-black md:text-white lg:text-white font-bold">
+          <Link to={"/dashboard/myselectedclass"}>Dashboard</Link>
         </li>
       )}
     </>
@@ -104,8 +112,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-// to={
-//               isAdmin
+// to={isAdmin
 //                 ? "/dashboard/manageclasses"
 //                 : isInstructor
 //                 ? "/dashboard/addaclass"
@@ -113,3 +120,19 @@ export default Navbar;
 //             }
 
 // to = "/dashboard";
+
+// {
+//   isAdmin ? (
+//     <li className="text-black md:text-white lg:text-white font-bold">
+//       <Link to={"/dashboard/manageclasses"}>Dashboard</Link>
+//     </li>
+//   ) : isInstructor ? (
+//     <li className="text-black md:text-white lg:text-white font-bold">
+//       <Link to={"/dashboard/addaclass"}>Dashboard</Link>
+//     </li>
+//   ) : (
+//     <li className="text-black md:text-white lg:text-white font-bold">
+//       <Link to={"/dashboard/myselectedclass"}>Dashboard</Link>
+//     </li>
+//   );
+// }

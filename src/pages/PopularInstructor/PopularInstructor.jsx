@@ -1,19 +1,34 @@
 import { useEffect, useState } from "react";
 import PopularInstructorCard from "./PopularInstructorCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const PopularInstructor = () => {
+  const [axiosSecure] = useAxiosSecure();
   const [topInstructors, setTopInstructor] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
-      .then((res) => res.json())
-      .then((data) => {
+    axiosSecure
+      .get("/users/instructors")
+      .then((res) => {
+        const data = res.data;
         setTopInstructor(data);
+        // console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
-  }, []);
+  }, [axiosSecure]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/instructors")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setTopInstructor(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
     <div>
       <h3 className="text-3xl font-bold italic text-center">

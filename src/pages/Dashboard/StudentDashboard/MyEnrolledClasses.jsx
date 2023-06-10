@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
 
 const MyEnrolledClasses = () => {
+  const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [allEnrolled, setAllEnrolled] = useState([]);
   // console.log(allEnrolled);
 
   useEffect(() => {
-    axiosSecure
-      .get("/enrolled-classes")
-      .then((res) => {
-        const data = res.data;
-        setAllEnrolled(data);
-        // console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [axiosSecure]);
+    if (user && user.email) {
+      axiosSecure
+        .get(`/enrolled-classes?email=${user?.email}`)
+        .then((res) => {
+          const data = res.data;
+          setAllEnrolled(data);
+          // console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [axiosSecure, user]);
 
   return (
     <div>

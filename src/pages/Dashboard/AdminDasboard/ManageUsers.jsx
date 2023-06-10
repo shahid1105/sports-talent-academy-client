@@ -30,7 +30,7 @@ const ManageUsers = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Make admin/instructor",
+            title: "Success",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -78,32 +78,7 @@ const ManageUsers = () => {
                     </div>
                   </div>
                 </td>
-                {/* <td>
-                  {user.role === "instructor" || user.role === "admin" ? (
-                    <>
-                      <button
-                        disabled={disable}
-                        className="btn btn-ghost btn-xs text-white font-bold bg-indigo-500">
-                        Add Instructor
-                      </button>
-                      <button
-                        disabled={disable}
-                        className={`px-5  rounded-lg  btn-xs text-white font-bold ${
-                          disable ? "bg-red-500" : "bg-indigo-500"
-                        }`}>
-                        Add Instructor
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => handleMakeInstructor(user)}
-                        className="btn btn-ghost btn-xs text-white font-bold bg-indigo-500">
-                        Add Instructor
-                      </button>
-                    </>
-                  )}
-                </td> */}
+
                 <td>
                   {user.role === "instructor" || user.role === "admin" ? (
                     <>

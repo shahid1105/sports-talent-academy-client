@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import InstructorsRow from "./InstructorsRow";
 
 const Instructors = () => {
+  const [axiosSecure] = useAxiosSecure();
   const [instructors, setInstructor] = useState([]);
+  console.log(instructors);
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
-      .then((res) => res.json())
-      .then((data) => {
+    axiosSecure
+      .get("/users/instructors")
+      .then((res) => {
+        const data = res.data;
         setInstructor(data);
+        // console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
-  }, []);
+  }, [axiosSecure]);
   return (
     <div className="overflow-x-auto">
       <h3 className="text-3xl font-bold italic text-center">
@@ -27,15 +32,13 @@ const Instructors = () => {
             <th>Photo</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Classes Taken</th>
-            <th>Class Name</th>
-            <th></th>
+            <th>See Classes</th>
           </tr>
         </thead>
         <tbody>
           {instructors.map((instructor, index) => (
             <InstructorsRow
-              key={index}
+              key={instructor._id}
               index={index}
               instructor={instructor}></InstructorsRow>
           ))}

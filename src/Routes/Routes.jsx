@@ -12,10 +12,12 @@ import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledCla
 import ManageClasses from "../pages/Dashboard/AdminDasboard/ManageClasses";
 import ManageUsers from "../pages/Dashboard/AdminDasboard/ManageUsers";
 import AddAClass from "../pages/Dashboard/InstructorDashboard/AddAClass";
+import MyClasses from "../pages/Dashboard/InstructorDashboard/MyClasses";
 import IsAdminRoutes from "./IsAdminRoutes";
 import IsInstructorRoutes from "./IsInstructorRoutes";
 import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory";
+import UpdateAClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/UpdateAClass";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +96,22 @@ const router = createBrowserRouter([
         element: (
           <IsInstructorRoutes>
             <AddAClass></AddAClass>
+          </IsInstructorRoutes>
+        ),
+      },
+      {
+        path: "myclasses",
+        element: (
+          <IsInstructorRoutes>
+            <MyClasses></MyClasses>
+          </IsInstructorRoutes>
+        ),
+      },
+      {
+        path: "updateclass",
+        element: (
+          <IsInstructorRoutes>
+            <UpdateAClass></UpdateAClass>
           </IsInstructorRoutes>
         ),
       },

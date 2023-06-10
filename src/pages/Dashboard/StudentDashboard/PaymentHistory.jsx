@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
 
 const PaymentHistory = () => {
+  const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [paymentHistory, setPaymentHistory] = useState([]);
-  console.log(paymentHistory);
+  // console.log(paymentHistory);
 
   useEffect(() => {
-    axiosSecure
-      .get("/payment-history")
-      .then((res) => {
-        const data = res.data;
-        setPaymentHistory(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [axiosSecure]);
+    if (user && user.email) {
+      axiosSecure
+        .get(`/payment-history?email=${user?.email}`)
+        .then((res) => {
+          const data = res.data;
+          setPaymentHistory(data);
+          // console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [axiosSecure, user]);
 
   return (
     <div>

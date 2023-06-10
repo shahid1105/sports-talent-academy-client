@@ -1,14 +1,28 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
+import { useEffect, useState } from "react";
 // import { useState } from "react";
 
 const ClassCard = ({ classData }) => {
-  // const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const { name, image, instructorName, availableSeats, price, _id } = classData;
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
+  useEffect(() => {
+    if (isAdmin || isInstructor) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [isAdmin, isInstructor]);
 
   const { user } = useAuth();
 
@@ -91,7 +105,7 @@ const ClassCard = ({ classData }) => {
           </div>
           <div className="card-actions mt-4">
             <button
-              disabled={false}
+              disabled={disabled}
               onClick={() => addToClass(classData)}
               className="btn bg-slate-600 text-white font-bold">
               Select

@@ -10,12 +10,12 @@ const AddAClass = () => {
   const {
     register,
     handleSubmit,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm();
 
   const handleAddAClass = (data) => {
-    // console.log(data);
+    console.log(data);
     const addClass = {
       className: data.className,
       price: Number(data.price),
@@ -29,7 +29,7 @@ const AddAClass = () => {
     axiosSecure.post("/add-a-class", addClass).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {
-        // reset();
+        reset();
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -95,7 +95,6 @@ const AddAClass = () => {
                 <option value="BadmintonClass">Badminton Class</option>
                 <option value="VolleyballClass">Volleyball Class</option>
                 <option value="GolfClass">Golf Class</option>
-                <option value="BoxingClass">Boxing Class</option>
                 <option value="SwimmingClass">Swimming Class</option>
                 <option value="BoxingClass">Boxing Class</option>
                 <option value="TennisClass">Tennis Class</option>

@@ -1,5 +1,5 @@
 const InstructorsRow = ({ instructor, index }) => {
-  const { name, image, classesTaken, numberOfClasses, email } = instructor;
+  const { name, image, email } = instructor;
   return (
     <tr>
       <th>{index + 1}</th>
@@ -13,24 +13,14 @@ const InstructorsRow = ({ instructor, index }) => {
         </div>
       </td>
       <td>
-        <div>
-          <div className="font-bold">{name}</div>
-        </div>
+        <div className="font-bold">{name}</div>
       </td>
       <td>{email}</td>
-      <td className="text-center">{numberOfClasses}</td>
       <td>
-        {classesTaken.map((className, index) => (
-          <div key={index} className="badge badge-outline">
-            {className}
-          </div>
-        ))}
-      </td>
-      <th>
         <button className="btn btn-ghost btn-xs bg-slate-300 font-bold">
           See Classes
         </button>
-      </th>
+      </td>
     </tr>
   );
 };
