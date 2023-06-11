@@ -68,6 +68,12 @@ const CheckOutForm = ({ singleData, price }) => {
 
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
+      axiosSecure
+        .patch(`/updated-class/${singleData.classItemId}`)
+        .then((res) => {
+          console.log(res.data);
+        });
+
       setTransactionId(paymentIntent.id);
       // save payments information to the server
       const payment = {
@@ -76,13 +82,12 @@ const CheckOutForm = ({ singleData, price }) => {
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
-        availableSeats: singleData.availableSeats - 1,
-        image: singleData.image,
+        photoURL: singleData.photoURL,
         instructorName: singleData.instructorName,
         singleDataItems: singleData._id,
         classItemId: singleData.classItemId,
+        className: singleData.className,
         status: "service Active",
-        className: singleData.name,
       };
       axiosSecure.post("/cart-payments", payment).then((res) => {
         console.log(res.data);

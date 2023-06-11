@@ -45,7 +45,6 @@ const MySelectedClass = () => {
               <th>Class Photo</th>
               <th>Instructor Name</th>
               <th>Class Name</th>
-              <th>Available Seats</th>
               <th>Price</th>
               <th>Delete</th>
               <th>Payment</th>
@@ -67,7 +66,6 @@ const MySelectedClass = () => {
                 </td>
                 <td>{classCart.instructorName}</td>
                 <td>{classCart.className}</td>
-                <td className="text-center">{classCart.availableSeats}</td>
                 <td> ${classCart.price}</td>
                 <td>
                   <button

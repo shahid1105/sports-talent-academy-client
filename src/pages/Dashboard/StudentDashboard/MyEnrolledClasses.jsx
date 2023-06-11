@@ -37,7 +37,6 @@ const MyEnrolledClasses = () => {
               <th>Class Photo</th>
               <th>Instructor Name</th>
               <th>Class Name</th>
-              <th>Available Seats</th>
               <th>Price</th>
               <th>Payment</th>
             </tr>
@@ -51,14 +50,13 @@ const MyEnrolledClasses = () => {
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={enrolled.image} alt="" />
+                        <img src={enrolled.photoURL} alt="" />
                       </div>
                     </div>
                   </div>
                 </td>
                 <td>{enrolled.instructorName}</td>
                 <td>{enrolled.className}</td>
-                <td className="text-center">{enrolled.availableSeats}</td>
                 <td> ${enrolled.price}</td>
                 <td>
                   <p className="px-[6px] py-2 rounded-lg bg-green-400 text-white font-bold">

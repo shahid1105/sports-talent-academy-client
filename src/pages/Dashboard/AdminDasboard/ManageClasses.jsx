@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
-  const [disable, setDisable] = useState(false);
+  // const [disable, setDisable] = useState(false);
 
   const [axiosSecure] = useAxiosSecure();
   // const [allClasses, setAllClasses] = useState([]);
@@ -44,7 +44,7 @@ const ManageClasses = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-          setDisable(true);
+          // setDisable(true);
           refetch();
           Swal.fire({
             position: "top-end",
@@ -112,7 +112,23 @@ const ManageClasses = () => {
                 <td className="text-center">{allClass.availableSeats}</td>
                 <td>{allClass.price}</td>
                 <td className="text-blue-700">{allClass.status}</td>
-                {allClass.status === "Approved" ||
+                <td>
+                  {allClass.status === "Approved" ? (
+                    <button disabled>Approved</button>
+                  ) : (
+                    <button onClick={() => handleApproved(allClass)}>
+                      Approved
+                    </button>
+                  )}
+                </td>
+                <td>
+                  {allClass.status === "Denied" ? (
+                    <button disabled>Deny</button>
+                  ) : (
+                    <button onClick={() => handleDeny(allClass)}>Deny</button>
+                  )}
+                </td>
+                {/* {allClass.status === "Approved" ||
                 allClass.status === "Denied" ? (
                   <>
                     <td>
@@ -149,7 +165,7 @@ const ManageClasses = () => {
                       </button>
                     </td>
                   </>
-                )}
+                )} */}
 
                 <td>
                   <Link to="/dashboard/feedback">

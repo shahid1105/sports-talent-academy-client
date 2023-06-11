@@ -22,7 +22,7 @@ const AddAClass = () => {
       instructorName: data.instructorName,
       instructorEmail: data.instructorEmail,
       photoURL: data.photoURL,
-      availableSeats: data.availableSeats,
+      availableSeats: Number(data.availableSeats),
       status: "Pending",
     };
     console.log(addClass);
