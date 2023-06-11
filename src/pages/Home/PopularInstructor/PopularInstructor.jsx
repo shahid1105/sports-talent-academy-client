@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import PopularInstructorCard from "./PopularInstructorCard";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const PopularInstructor = () => {
   const [axiosSecure] = useAxiosSecure();

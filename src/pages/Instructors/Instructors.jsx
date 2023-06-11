@@ -5,7 +5,7 @@ import InstructorsRow from "./InstructorsRow";
 const Instructors = () => {
   const [axiosSecure] = useAxiosSecure();
   const [instructors, setInstructor] = useState([]);
-  console.log(instructors);
+  // console.log(instructors);
 
   useEffect(() => {
     axiosSecure

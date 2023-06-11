@@ -6,7 +6,7 @@ import useAuth from "../../../Hooks/useAuth";
 const MyClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const [myClasses, setMyClasses] = useState([]);
-  console.log(myClasses);
+  // console.log(myClasses);
 
   const { user } = useAuth();
 
@@ -60,9 +60,10 @@ const MyClasses = () => {
                 <td className="text-center">{myClass.totalEnrolled}</td>
                 <td className="text-blue-700">{myClass.status}</td>
                 <td>
-                  <button className="btn btn-xs font-semibold bg-yellow-400 text-black btn-warning border-gray-800 border-4">
+                  {myClass.feedback}
+                  {/* <button className="btn btn-xs font-semibold bg-yellow-400 text-black btn-warning border-gray-800 border-4">
                     Feedback
-                  </button>
+                  </button> */}
                 </td>
                 <td>
                   <Link to="dashboard/updateclass">

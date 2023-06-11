@@ -4,6 +4,14 @@ import { FaStore } from "react-icons/fa";
 import useClassCart from "../../Hooks/useClassCart";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
+import {
+  MdClass,
+  MdOutlineClass,
+  MdOutlineManageAccounts,
+  MdPayment,
+} from "react-icons/md";
+import { FcAddRow } from "react-icons/fc";
+import { GrUserManager } from "react-icons/gr";
 
 const Dashboard = () => {
   const [classCarts] = useClassCart();
@@ -32,22 +40,27 @@ const Dashboard = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <Link to="/dashboard/manageclasses">Manage Classes</Link>
+                  <Link to="/dashboard/manageclasses">
+                    <MdOutlineManageAccounts></MdOutlineManageAccounts> Manage
+                    Classes
+                  </Link>
                 </li>
                 <li>
                   <Link className="mt-4" to="/dashboard/manageusers">
-                    Manage Users
+                    <GrUserManager></GrUserManager> Manage Users
                   </Link>
                 </li>
               </>
             ) : isInstructor ? (
               <>
                 <li>
-                  <Link to="/dashboard/addaclass">Add A Class</Link>
+                  <Link to="/dashboard/addaclass">
+                    <FcAddRow></FcAddRow> Add A Class
+                  </Link>
                 </li>
                 <li>
                   <Link className="mt-4" to="/dashboard/myclasses ">
-                    My Classes
+                    <MdOutlineClass></MdOutlineClass> My Classes
                   </Link>
                 </li>
               </>
@@ -63,12 +76,12 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link className="mt-4" to="/dashboard/myenrolledclass">
-                    My Enrolled Class
+                    <MdClass></MdClass> My Enrolled Class
                   </Link>
                 </li>
                 <li>
                   <Link className="mt-4" to="/dashboard/paymenthistory">
-                    Payment History
+                    <MdPayment></MdPayment> Payment History
                   </Link>
                 </li>
               </>

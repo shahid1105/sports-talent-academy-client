@@ -26,6 +26,7 @@ const AddAClass = () => {
       status: "Pending",
     };
     console.log(addClass);
+
     axiosSecure.post("/add-a-class", addClass).then((res) => {
       console.log(res.data);
       if (res.data.insertedId) {

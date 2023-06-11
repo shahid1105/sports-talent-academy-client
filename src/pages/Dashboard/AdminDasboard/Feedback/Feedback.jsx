@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Feedback = () => {
+  const { id } = useParams();
+  // console.log("id", id);
+
   const {
     register,
     handleSubmit,
@@ -9,11 +14,29 @@ const Feedback = () => {
   } = useForm();
 
   const handleSendFeedback = (data) => {
-    // event.preventDefault();
-    // const form = event.target;
-    // const feedback = form.feedback.value;
     console.log(data);
-    reset();
+    fetch(`http://localhost:5000/manage-feedback/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ feedback: data.feedback }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          // setDisable(true);
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Send Feedback",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -29,7 +52,7 @@ const Feedback = () => {
             id=""
             cols="90"
             rows="10"></textarea>
-          {errors.email && (
+          {errors.feedback && (
             <span className="text-red-500">Text Field is required</span>
           )}
         </div>

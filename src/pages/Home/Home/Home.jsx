@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
-import PopularClasses from "../../PopularClasses/PopularClasses";
-import PopularInstructor from "../../PopularInstructor/PopularInstructor";
 import Collection from "../Collection/Collection";
+import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularInstructor from "../PopularInstructor/PopularInstructor";
 
 const Home = () => {
   return (

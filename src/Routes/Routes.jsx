@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "feedback",
+        path: "feedback/:id",
         element: (
           <IsAdminRoutes>
             <Feedback></Feedback>{" "}

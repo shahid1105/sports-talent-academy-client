@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import { useEffect, useState } from "react";
-// import { useState } from "react";
 
 const ClassCard = ({ classData }) => {
   const [disabled, setDisabled] = useState(true);
@@ -110,12 +109,25 @@ const ClassCard = ({ classData }) => {
             </div>
           </div>
           <div className="card-actions mt-4">
-            <button
-              disabled={disabled}
-              onClick={() => addToClass(classData)}
-              className="btn bg-slate-600 text-white font-bold">
-              Select
-            </button>
+            {availableSeats === 0 ? (
+              <>
+                <button
+                  disabled={availableSeats === 0}
+                  onClick={() => addToClass(classData)}
+                  className="btn bg-slate-600 text-white font-bold">
+                  Select
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  disabled={disabled}
+                  onClick={() => addToClass(classData)}
+                  className="btn bg-slate-600 text-white font-bold">
+                  Select
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
