@@ -60,13 +60,13 @@ const MySelectedClass = () => {
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={classCart.image} alt="" />
+                        <img src={classCart.photoURL} alt="" />
                       </div>
                     </div>
                   </div>
                 </td>
                 <td>{classCart.instructorName}</td>
-                <td>{classCart.name}</td>
+                <td>{classCart.className}</td>
                 <td className="text-center">{classCart.availableSeats}</td>
                 <td> ${classCart.price}</td>
                 <td>

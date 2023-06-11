@@ -1,30 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
   const [disable, setDisable] = useState(false);
 
   const [axiosSecure] = useAxiosSecure();
-  const [allClasses, setAllClasses] = useState([]);
-  console.log(allClasses);
+  // const [allClasses, setAllClasses] = useState([]);
+  // console.log(allClasses);
 
-  useEffect(() => {
-    axiosSecure
-      .get(`/manage-classes`)
-      .then((res) => {
-        const data = res.data;
-        setAllClasses(data);
-        // console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [axiosSecure]);
+  const { data: allClasses = [], refetch } = useQuery(
+    ["manage-classes"],
+    async () => {
+      const res = await axiosSecure.get("/manage-classes");
+      return res.data;
+    }
+  );
+
+  // useEffect(() => {
+  //   axiosSecure
+  //     .get(`/manage-classes`)
+  //     .then((res) => {
+  //       const data = res.data;
+  //       setAllClasses(data);
+  //       // console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [axiosSecure]);
 
   const updateStatus = (allClass, role) => {
     fetch(`http://localhost:5000/manage-status/${allClass._id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,6 +45,7 @@ const ManageClasses = () => {
         console.log(data);
         if (data.modifiedCount) {
           setDisable(true);
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -53,7 +64,7 @@ const ManageClasses = () => {
 
   const handleDeny = (allClass) => {
     // console.log(allClass);
-    updateStatus(allClass, "Deny");
+    updateStatus(allClass, "Denied");
   };
 
   return (
@@ -101,35 +112,51 @@ const ManageClasses = () => {
                 <td className="text-center">{allClass.availableSeats}</td>
                 <td>{allClass.price}</td>
                 <td className="text-blue-700">{allClass.status}</td>
+                {allClass.status === "Approved" ||
+                allClass.status === "Denied" ? (
+                  <>
+                    <td>
+                      <button
+                        disabled={disable}
+                        onClick={() => handleApproved(allClass)}
+                        className="btn btn-xs bg-sky-400 text-white btn-accent">
+                        Approved
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        disabled={disable}
+                        onClick={() => handleDeny(allClass)}
+                        className="btn btn-ghost bg-red-500 btn-xs">
+                        Deny
+                      </button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>
+                      <button
+                        onClick={() => handleApproved(allClass)}
+                        className="btn btn-xs bg-sky-400 text-white btn-accent">
+                        Approved
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDeny(allClass)}
+                        className="btn btn-ghost bg-red-500 btn-xs">
+                        Deny
+                      </button>
+                    </td>
+                  </>
+                )}
 
                 <td>
-                  <button
-                    disabled={
-                      disable ||
-                      allClass.status === "Approved" ||
-                      allClass.status === "Deny"
-                    }
-                    onClick={() => handleApproved(allClass)}
-                    className="btn btn-xs bg-sky-400 text-white btn-accent">
-                    Approved
-                  </button>
-                </td>
-                <td>
-                  <button
-                    disabled={
-                      disable ||
-                      allClass.status === "Approved" ||
-                      allClass.status === "Deny"
-                    }
-                    onClick={() => handleDeny(allClass)}
-                    className="btn btn-ghost bg-red-500 btn-xs">
-                    Deny
-                  </button>
-                </td>
-                <td>
-                  <button className="btn btn-xs font-semibold bg-yellow-400 text-black btn-warning border-gray-800 border-4">
-                    Feedback
-                  </button>
+                  <Link to="/dashboard/feedback">
+                    <button className="btn btn-xs font-semibold bg-yellow-400 text-black btn-warning border-gray-800 border-4">
+                      Feedback
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}

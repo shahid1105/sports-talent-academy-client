@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 
 const ClassCard = ({ classData }) => {
   const [disabled, setDisabled] = useState(true);
-  const { name, image, instructorName, availableSeats, price, _id } = classData;
+  const { className, photoURL, instructorName, availableSeats, price, _id } =
+    classData;
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,8 +34,8 @@ const ClassCard = ({ classData }) => {
         classItemId: _id,
         instructorName,
         availableSeats,
-        name,
-        image,
+        className,
+        photoURL,
         price,
         email: user.email,
       };
@@ -78,12 +79,14 @@ const ClassCard = ({ classData }) => {
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
-          <img src={image} alt="Shoes" className="rounded-xl h-[300px]" />
+          <img src={photoURL} alt="Shoes" className="rounded-xl h-[300px]" />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">
             Class Name:{" "}
-            <span className="text-violet-700 italic font-bold">{name}</span>
+            <span className="text-violet-700 italic font-bold">
+              {className}
+            </span>
           </h2>
           <h2 className="mt-1 mb-3">
             Instructor Name:{" "}

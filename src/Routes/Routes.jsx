@@ -18,11 +18,14 @@ import IsInstructorRoutes from "./IsInstructorRoutes";
 import Payment from "../pages/Dashboard/StudentDashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory";
 import UpdateAClass from "../pages/Dashboard/InstructorDashboard/UpdateClass/UpdateAClass";
+import Feedback from "../pages/Dashboard/AdminDasboard/Feedback/Feedback";
+import ErrorPage from "../pages/ErrorPage/Errorpage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -53,6 +56,7 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </ProtectedRoutes>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // students routes
       {
@@ -89,6 +93,14 @@ const router = createBrowserRouter([
           </IsAdminRoutes>
         ),
       },
+      {
+        path: "feedback",
+        element: (
+          <IsAdminRoutes>
+            <Feedback></Feedback>{" "}
+          </IsAdminRoutes>
+        ),
+      },
 
       // instructors routers
       {
@@ -117,6 +129,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: "*",
+  //   element: <ErrorPage />,
+  // },
 ]);
 
 export default router;

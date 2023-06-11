@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
 import ClassCard from "./ClassCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Classes = () => {
+  const [axiosSecure] = useAxiosSecure();
+
   const [classes, setClasses] = useState([]);
   // console.log(classes);
+
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
-      .then((res) => res.json())
-      .then((data) => {
+    axiosSecure
+      .get("/classes")
+      .then((res) => {
+        const data = res.data;
         setClasses(data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-  }, []);
+  }, [axiosSecure]);
+
   return (
     <div>
       <h1 className="text-3xl font-bold italic text-center">

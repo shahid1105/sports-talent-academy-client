@@ -28,17 +28,18 @@ const Navbar = () => {
       <li className="text-black md:text-white lg:text-white font-bold">
         <Link to="/classes">Classes</Link>
       </li>
-      {isAdmin ? (
+      {user && (
         <li className="text-black md:text-white lg:text-white font-bold">
-          <Link to={"/dashboard/manageclasses"}>Dashboard</Link>
-        </li>
-      ) : isInstructor ? (
-        <li className="text-black md:text-white lg:text-white font-bold">
-          <Link to={"/dashboard/addaclass"}>Dashboard</Link>
-        </li>
-      ) : (
-        <li className="text-black md:text-white lg:text-white font-bold">
-          <Link to={"/dashboard/myselectedclass"}>Dashboard</Link>
+          <Link
+            to={
+              isAdmin
+                ? "/dashboard/manageclasses"
+                : isInstructor
+                ? "/dashboard/addaclass"
+                : "/dashboard/myselectedclass"
+            }>
+            Dashboard
+          </Link>
         </li>
       )}
     </>
