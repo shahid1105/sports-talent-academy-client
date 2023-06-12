@@ -18,7 +18,7 @@ const Payment = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/payment/${id}`)
+      .get(`https://sports-talent-academy-server.vercel.app/payment/${id}`)
       .then((res) => {
         const paymentData = res.data;
         // console.log(paymentData);
@@ -30,7 +30,7 @@ const Payment = () => {
   }, [id]);
 
   // axios
-  //   .get(`http://localhost:5000/payment/${id}`)
+  //   .get(`https://sports-talent-academy-server.vercel.app/payment/${id}`)
   //   .then((res) => {
   //     const paymentData = res.data;
   //     console.log(paymentData);

@@ -1,0 +1,11 @@
+/* Styles for light theme */
+.home-page.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Styles for dark theme */
+.home-page.dark {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}

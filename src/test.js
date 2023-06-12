@@ -46,7 +46,7 @@
 //     }, [axiosSecure]);
 
 //     const updateStatus = (allClass, role) => {
-//         fetch(`http://localhost:5000/manage-status/${allClass._id}`, {
+//         fetch(`https://sports-talent-academy-server.vercel.app/manage-status/${allClass._id}`, {
 //             method: "PUT",
 //             headers: {
 //                 "Content-Type": "application/json",

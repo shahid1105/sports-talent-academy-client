@@ -58,7 +58,6 @@ const Login = () => {
                   </label>
                   <input
                     {...register("email", { required: true })}
-                    defaultValue={"sportstalentacademy@gmail.com"}
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
@@ -73,7 +72,6 @@ const Login = () => {
                   </label>
                   <input
                     {...register("password", { required: true })}
-                    defaultValue={"12Ss@@"}
                     type="password"
                     placeholder="password"
                     className="input input-bordered"

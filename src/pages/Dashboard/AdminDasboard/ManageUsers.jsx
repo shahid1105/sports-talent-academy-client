@@ -14,13 +14,16 @@ const ManageUsers = () => {
   });
 
   const updateUserRole = (user, role) => {
-    fetch(`http://localhost:5000/users/vip/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ role }),
-    })
+    fetch(
+      `https://sports-talent-academy-server.vercel.app/users/vip/${user._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ role }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

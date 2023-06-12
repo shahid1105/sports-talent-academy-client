@@ -15,13 +15,16 @@ const Feedback = () => {
 
   const handleSendFeedback = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/manage-feedback/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ feedback: data.feedback }),
-    })
+    fetch(
+      `https://sports-talent-academy-server.vercel.app/manage-feedback/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ feedback: data.feedback }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -28,7 +28,7 @@ const SignUp = () => {
             email: data.email,
             image: data.photoURL,
           };
-          fetch("http://localhost:5000/users", {
+          fetch("https://sports-talent-academy-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -72,7 +72,6 @@ const SignUp = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                  defaultValue={"sports talent"}
                   {...register("name", { required: true })}
                   type="text"
                   placeholder="Name"
@@ -88,7 +87,6 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("photoURL", { required: true })}
-                  defaultValue={"https://i.ibb.co/cyNTQ9x/profile-3.png"}
                   type="text"
                   placeholder="photoURL"
                   className="input input-bordered"
@@ -103,7 +101,6 @@ const SignUp = () => {
                 </label>
                 <input
                   {...register("email", { required: true })}
-                  defaultValue={"@gmail.com"}
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
@@ -125,7 +122,6 @@ const SignUp = () => {
                       /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
                   })}
                   type="password"
-                  defaultValue={"12Ss@@"}
                   placeholder="password"
                   className="input input-bordered"
                 />
@@ -161,7 +157,6 @@ const SignUp = () => {
                       "Passwords do not match",
                   })}
                   type="password"
-                  defaultValue={"12Ss@@"}
                   placeholder="Confirm Password"
                   className="input input-bordered"
                 />

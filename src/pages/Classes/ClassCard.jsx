@@ -38,7 +38,7 @@ const ClassCard = ({ classData }) => {
         price,
         email: user.email,
       };
-      fetch("http://localhost:5000/class-cart", {
+      fetch("https://sports-talent-academy-server.vercel.app/class-cart", {
         method: "POST",
         headers: {
           "content-type": "application/json",

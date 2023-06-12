@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       // get and set token , use local storage for token bear
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://sports-talent-academy-server.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {
