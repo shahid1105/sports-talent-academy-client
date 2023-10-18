@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+
 
 const PopularClasses = () => {
   const [poplarClasses, setPopularClasses] = useState([]);
@@ -15,14 +15,11 @@ const PopularClasses = () => {
 
   return (
     <div className="md:mb-12 lg:mb-12 md:mt-20 lg:mt-20">
-      <motion.h3
-        initial={{ x: -100 }}
-        animate={{ x: [0, 900, 0] }}
-        transition={{ duration: "4", delay: "5" }}>
+      <>
         <h3 className="md:text-3xl lg:text-3xl font-bold italic text-center">
           --- Our Top Classes Here ---
         </h3>
-      </motion.h3>
+      </>
       <p className="text-gray-500 mt-3 md:mt-8 lg:mt-8 md:px-32 lg:px-32 text-center">
         Discover our Top Sports Classes: Experience the thrill of our top sports
         classes led by skilled instructors. Whether you are a beginner or an
@@ -34,16 +31,7 @@ const PopularClasses = () => {
       <div className="mt-8 md:mt-24 lg:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {poplarClasses.map((popularClass, index) => (
           <>
-            <motion.div
-              animate={{
-                scale: [1, 2, 2, 1, 1],
-                rotate: [0, 0, 360, 360, 0],
-                borderRadius: ["10%", "10%", "10%", "10%", "10%"],
-                zIndex: 100,
-              }}
-              transition={{
-                duration: 8,
-              }}>
+            <>
               <div key={index} className="card w-[100%] bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
@@ -77,7 +65,7 @@ const PopularClasses = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </>
           </>
         ))}
       </div>

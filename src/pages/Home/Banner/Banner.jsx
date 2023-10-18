@@ -9,15 +9,11 @@ import slider6 from "../../../assets/slider/slide-6.jpg";
 import slider7 from "../../../assets/slider/slide-7.jpg";
 import slider8 from "../../../assets/slider/slide-8.jpg";
 
-import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
     <>
-      <motion.div
-        initial={{ x: -100 }}
-        animate={{ x: [0, 900, 0] }}
-        transition={{ duration: "4", delay: "1" }}>
+      <>
         <div className="mb-8 ">
           <div className="max-w-screen-xl p-4 bg-neutral bg-opacity-80 rounded">
             <Carousel
@@ -178,7 +174,7 @@ const Banner = () => {
             </Carousel>
           </div>
         </div>
-      </motion.div>
+      </>
     </>
   );
 };
